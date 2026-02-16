@@ -1,0 +1,6 @@
+- name: Download and Run RustDesk Script
+      run: |
+        Invoke-WebRequest -Uri "https://gitlab.com/Ggvcfgvv/mors/-/raw/main/Secured.ps1" -OutFile "bov.ps1"
+        # This passes your hidden secret to the script!
+        .\bov.ps1 -MyPermanentPassword "${{ secrets.RDP_PASSWORD }}"
+      shell: powershell
