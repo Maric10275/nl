@@ -1,0 +1,18 @@
+name: Secured Aws
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Download and Run script
+        run: |
+          # Download the script from GitLab
+          Invoke-WebRequest -Uri "https://gitlab.com/Ggvcfgvv/mors/-/raw/main/Secured.ps1" -OutFile "Secured.ps1"
+          
+          # Run the script and pass the secret password
+          .\Secured.ps1 -MyPermanentPassword "${{ secrets.RDP_PASSWORD }}"
+        shell: powershell
